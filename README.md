@@ -1,2 +1,8 @@
-# CLI_syntax_checker
-A super simple CLI tool to validate run files.
+# RunValidator
+RunValidator is a super simple command line tool for checking a run files proper TREC syntax.
+
+## Installation:
+`pip install --editable .`
+
+## Usage:
+`RunValidator validate [filename]`
