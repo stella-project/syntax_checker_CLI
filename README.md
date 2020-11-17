@@ -1,6 +1,6 @@
 **RunValidator**
 ---
-`RunValidator` is a super simple command line tool mainly for checking a run files proper TREC syntax.
+`RunValidator` is a super simple command line tool mainly for checking a retrieval runs proper TREC syntax.
 
 **Usage**
 ---
@@ -18,8 +18,13 @@ Commands:
 
 **Validation**
 ---
-`RunValidator` validates a whole runfile or `k` randomly chosen sample lines from a run file for
-
+`RunValidator` validates a whole retrieval run or `k` randomly chosen sample lines from a run. At the moment this tool checks:
+1. the delimeter
+2. if a line consists of 6 fields
+3. for a proper run tag
+4. if a runtag is consistent throughout the run
+5. the `Q0` field
+6. for a correct ranking
 
 **Installation:**
 ---
