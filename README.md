@@ -24,6 +24,11 @@ Commands:
 **Installation:**
 ---
 1. Clone the `RunValidator` reposetory:
-```git clone https://github.com/stella-project/syntax_checker_CLI.git```
+```
+git clone https://github.com/stella-project/syntax_checker_CLI.git
+```
+
 2. Install `RunValidator`:
-```cd syntax_checker_CLI && pip install --editable .```
+```
+cd syntax_checker_CLI && pip install --editable .
+```
