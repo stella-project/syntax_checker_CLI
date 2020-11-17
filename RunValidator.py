@@ -92,22 +92,27 @@ def cli():
 
 @cli.command()
 @click.argument('input', type=click.File('r'), nargs=-1)
-def validate(input):
+@click.option('--k', default=100, help='limit validation to k randomly chosen lines')
+def validate(input, k):
     """Check the syntax of a ranking file."""
     ranking = str()
-    for f in input:
-        while True:
-            chunk = f.read(1024)
-            if not chunk:
-                break
-            ranking += chunk
-    click.echo('Validation started:')
-    result = validator(ranking, k=500)
-    click.echo('Validation finished!')
-    if result:
-        click.echo(''.join(result))
+
+    if input:
+        for f in input:
+            while True:
+                chunk = f.read(1024)
+                if not chunk:
+                    break
+                ranking += chunk
+        click.echo('Validation started:')
+        result = validator(ranking, k=k)
+        click.echo('Validation finished!')
+        if result:
+            click.echo(''.join(result))
+        else:
+            click.echo('Validation succeeded!')
     else:
-        click.echo('Validation succeeded!')
+        click.echo('Which file should be validated?')
 
 
 @cli.command()
@@ -125,8 +130,7 @@ def split(filename):
         elif ' ' in line:
             fields = line.split(' ')
         else:
-            # print('Error Line {} - Could not detect delimiter.\n'.format(str(lines.index(line) + 1)))
-            pass
+            click.echo(r'RunValidator just supports `\n` and \s as delimiter.')
 
         files.setdefault(fields[0], []).append(line)
 
