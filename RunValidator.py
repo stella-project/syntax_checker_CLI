@@ -4,7 +4,7 @@ import click
 import random
 
 
-def validator(run_str, k=None):
+def validator(run_str, **kwargs):
     """Validates a run file string.
     
     Args:
@@ -35,17 +35,17 @@ def validator(run_str, k=None):
                 message.append(error_log[error_type][0] + '\n')
         return message
 
+    k = int(kwargs.get('k', None))
     error_log = {}
     run_tag = {}
     topics = {}
     samples = []
     if run_str:
         lines = run_str.split('\n')[:-1]
-        if k:
+        if k > 0:
             for _ in range(0, k):
                 s = lines[random.randint(0, len(lines) - 1)]  # Pick k random lines to validate.
                 samples.append(s)
-                # todo alles testen
         else:
             samples = lines
 
@@ -121,15 +121,9 @@ def cli():
 
 @cli.command()
 @click.argument('filename', type=click.File('r'), nargs=-1)
-@click.option('--k', default=1000, help='limit validation to k randomly chosen lines')
+@click.option('--k', help='limit validation to k randomly chosen lines')
 def validate(filename, k):
-    """Check the syntax of a run file
-
-    Args:
-        filename: Run file or path to run file.
-        k: Number random sample lines to validate in-depth.
-
-    """
+    """Check the syntax of a run file."""
     ranking = str()
 
     if filename:
