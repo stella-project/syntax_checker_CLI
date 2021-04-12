@@ -19,12 +19,12 @@ Commands:
 **Validation**
 ---
 `RunValidator` validates a whole retrieval run or `k` randomly chosen sample lines from a run. At the moment this tool checks:
-1. the delimeter
-2. if a line consists of 6 fields
-3. for a proper run tag
-4. if a runtag is consistent throughout the run
-5. the `Q0` field
-6. for a correct ranking
+1. The delimiter (<kbd>Tab</kbd> and <kbd>Space</kbd> are valid.),
+2. if a line consists of 6 fields,
+3. for a proper run tag,
+4. if a run tag is consistent throughout the run,
+5. if the `Q0` field exists,
+6. for a correct ranking order.
 
 **Installation:**
 ---
