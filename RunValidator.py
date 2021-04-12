@@ -88,8 +88,8 @@ def validator(run_str, k=None):
                 # todo: Topic anzahl abgleichen
 
                 # Check for Q0 field.
-                if ('Q0'.casefold() or '0') not in fields[1].casefold():
-                    error_log.setdefault('Q0', []).append('Error line {} - "Field 2 is {} not "Q0"'.format(
+                if fields[1].casefold() not in ["Q0", "0"]:
+                    error_log.setdefault('Q0', []).append('Error line {} - Field 2 is "{}" not "Q0"'.format(
                         str(lines.index(line) + 1), str(fields[1])))
                     continue
 
