@@ -45,6 +45,7 @@ def validator(run_str, k=None):
             for _ in range(0, k):
                 s = lines[random.randint(0, len(lines) - 1)]  # Pick k random lines to validate.
                 samples.append(s)
+                # todo alles testen
         else:
             samples = lines
 
@@ -61,9 +62,14 @@ def validator(run_str, k=None):
                     continue
 
                 # Check if all 6 required fields exist.
-                if len(fields) != 6:
+                if len(fields) < 6:
                     error_log.setdefault('missing fields', []).append(
                         'Error line {} - Missing fields'.format(str(lines.index(line) + 1)))
+                    continue
+
+                if len(fields) > 6:
+                    error_log.setdefault('too many fields', []).append(
+                        'Error line {} - Too Many fields'.format(str(lines.index(line) + 1)))
                     continue
 
                 # Check if run tag is valid and consistent.
@@ -82,7 +88,7 @@ def validator(run_str, k=None):
                 # todo: Topic anzahl abgleichen
 
                 # Check for Q0 field.
-                if 'Q0'.casefold() not in fields[1].casefold():
+                if ('Q0'.casefold() or '0') not in fields[1].casefold():
                     error_log.setdefault('Q0', []).append('Error line {} - "Field 2 is {} not "Q0"'.format(
                         str(lines.index(line) + 1), str(fields[1])))
                     continue
@@ -115,7 +121,7 @@ def cli():
 
 @cli.command()
 @click.argument('filename', type=click.File('r'), nargs=-1)
-@click.option('--k', default=100, help='limit validation to k randomly chosen lines')
+@click.option('--k', default=1000, help='limit validation to k randomly chosen lines')
 def validate(filename, k):
     """Check the syntax of a run file
 
