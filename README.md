@@ -29,7 +29,7 @@ Commands:
 2. if a line consists of 6 fields,
 3. for a proper run tag,
 4. if a run tag is consistent throughout the run,
-5. if the `Q0` field exists,
+5. if the `iterator` field is `Q0` or `0`,
 6. for a correct ranking order.
 
 **Installation:**
