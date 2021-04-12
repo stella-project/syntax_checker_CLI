@@ -1,6 +1,12 @@
+<a href="https://stella-project.org/"><img align="right" width="100" src="doc/img/logo-st.JPG" /></a>
 **RunValidator**
 ---
-`RunValidator` is a super simple command line tool mainly for checking a retrieval runs proper TREC syntax.
+`RunValidator` is a super simple command line tool mainly for checking a retrieval runs proper TREC syntax.<br><br>
+A **run-file** is a tabular representation of retrieval results. It shouldn't contain the table headings must be seperated by <kbd>Tab</kbd> and <kbd>Space</kbd>. Each line consists of these fields:<br>
+
+|**Field:**|`query-ID`|`iterator`|`document-id`|`rank`|`score`|`run-ID`|
+|---|---|---|---|---|---|---|
+|**Description:**|ID or number of the query |Reserved field, should be `Q0`or `0`|Id of the ranked document|Rank of the Document|Score of the document considering the query|ID for this run|
 
 **Usage**
 ---
@@ -12,7 +18,7 @@ Options:
   --help  Show this message and exit.
 
 Commands:
-  split     Split a run file by topic name into separate files.
+  split     Split a run-file by topic name into separate files.
   validate  Check the syntax of a ranking file.
 ```
 
