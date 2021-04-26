@@ -69,7 +69,7 @@ def validator(run_str, **kwargs):
 
                 if len(fields) > 6:
                     error_log.setdefault('too many fields', []).append(
-                        'Error line {} - Too Many fields'.format(str(lines.index(line) + 1)))
+                        'Error line {} - Too many fields'.format(str(lines.index(line) + 1)))
                     continue
 
                 # Check if run tag is valid and consistent.
