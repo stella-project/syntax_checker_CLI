@@ -35,7 +35,7 @@ def validator(run_str, **kwargs):
                 message.append(error_log[error_type][0] + '\n')
         return message
 
-    k = int(kwargs.get('k', None))
+    k = int(kwargs.get('k', 0))
     error_log = {}
     run_tag = {}
     topics = {}
