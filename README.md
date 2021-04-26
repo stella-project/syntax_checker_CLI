@@ -37,5 +37,4 @@ Commands:
 
 ```
 pip install git+https://github.com/stella-project/syntax_checker_CLI.git
-
 ```
