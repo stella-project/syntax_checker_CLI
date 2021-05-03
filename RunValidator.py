@@ -35,8 +35,8 @@ def validator(run_str, **kwargs):
                 message.append(error_log[error_type][0] + '\n')
         return message
 
-    if "k" in kwargs:
-        k = int(kwargs.get("k"))
+
+    k = int(kwargs.get("k"))
     error_log = {}
     run_tag = {}
     topics = {}
@@ -135,6 +135,8 @@ def validate(filename, k):
                     break
                 ranking += chunk
         click.echo('Validation started:')
+        if not k:
+            k = 0
         result = validator(ranking, k=k)
         click.echo('Validation finished!')
         if result:
