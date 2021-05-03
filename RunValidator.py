@@ -35,14 +35,15 @@ def validator(run_str, **kwargs):
                 message.append(error_log[error_type][0] + '\n')
         return message
 
-    k = int(kwargs.get('k', 0))
+    if "k" in kwargs:
+        k = int(kwargs.get("k"))
     error_log = {}
     run_tag = {}
     topics = {}
     samples = []
     if run_str:
         lines = run_str.split('\n')[:-1]
-        if k > 0:
+        if k:
             for _ in range(0, k):
                 s = lines[random.randint(0, len(lines) - 1)]  # Pick k random lines to validate.
                 samples.append(s)
